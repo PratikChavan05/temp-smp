@@ -10,7 +10,7 @@ const App = () => {
     <Router>
       <div style={{ minHeight: '100vh', backgroundColor: 'var(--color-background)' }}>
         <Navigation />
-        <main style={{ padding: 'var(--spacing-xl) 0' }}>
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/inquiry" element={<InquiryForm />} />

@@ -124,11 +124,12 @@ const InquiryForm = () => {
   ];
 
   return (
-    <div className="form-container">
-      <div className="form-header">
-        <h1 className="form-title">Student Inquiry Form</h1>
-        <p className="form-subtitle">Please fill in the details below to submit your inquiry</p>
-      </div>
+    <div style={{ paddingTop: '80px', paddingBottom: 'var(--spacing-xl)', backgroundColor: 'var(--color-cream)', minHeight: '100vh' }}>
+      <div className="form-container">
+        <div className="form-header">
+          <h1 className="form-title">Student Inquiry Form</h1>
+          <p className="form-subtitle">Please fill in the details below to submit your inquiry</p>
+        </div>
 
       {submitStatus && (
         <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'}`}>
@@ -400,6 +401,7 @@ const InquiryForm = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

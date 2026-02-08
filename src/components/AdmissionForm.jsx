@@ -147,11 +147,12 @@ const AdmissionForm = () => {
   ];
 
   return (
-    <div className="form-container">
-      <div className="form-header">
-        <h1 className="form-title">Student Admission Form</h1>
-        <p className="form-subtitle">Please fill in the details below to complete your admission</p>
-      </div>
+    <div style={{ paddingTop: '80px', paddingBottom: 'var(--spacing-xl)', backgroundColor: 'var(--color-cream)', minHeight: '100vh' }}>
+      <div className="form-container">
+        <div className="form-header">
+          <h1 className="form-title">Student Admission Form</h1>
+          <p className="form-subtitle">Please fill in the details below to complete your admission</p>
+        </div>
 
       {submitStatus && (
         <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'}`}>
@@ -443,6 +444,7 @@ const AdmissionForm = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

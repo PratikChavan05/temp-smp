@@ -313,6 +313,7 @@ body {
 @media (max-width: 768px) {
   .form-container {
     padding: var(--spacing-lg);
+    margin: 0 0.75rem;
   }
   
   .form-grid {
@@ -343,5 +344,57 @@ body {
   
   .nav-link {
     text-align: center;
+  }
+}
+
+/* ===== Mobile Optimization ===== */
+@media (max-width: 640px) {
+  :root {
+    --spacing-xl: 1.5rem;
+    --spacing-2xl: 2rem;
+  }
+  
+  body {
+    font-size: 15px;
+  }
+  
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* ===== Smooth Scrolling ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Ensure Full Width ===== */
+body, #root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== Navigation Responsive Styles ===== */
+.desktop-menu {
+  display: flex !important;
+}
+
+.mobile-menu-btn,
+.mobile-dropdown {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none !important;
+  }
+  
+  .mobile-menu-btn {
+    display: block !important;
+  }
+  
+  .mobile-dropdown {
+    display: block !important;
   }
 }
