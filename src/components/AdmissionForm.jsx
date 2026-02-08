@@ -109,6 +109,19 @@ const AdmissionForm = () => {
     if (!validation.isValid) {
       setErrors(validation.errors);
       setSubmitStatus({ type: 'error', message: 'Please fill in all required fields correctly.' });
+      
+      // Scroll to top of form to show error message
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Alternatively, scroll to the first error field
+      setTimeout(() => {
+        const firstErrorField = document.querySelector('.form-field.error input, .form-field.error select, .form-field.error textarea');
+        if (firstErrorField) {
+          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstErrorField.focus();
+        }
+      }, 100);
+      
       return;
     }
     

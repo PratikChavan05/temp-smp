@@ -78,7 +78,7 @@ const FormField = ({
   };
   
   return (
-    <div className="form-field">
+    <div className={`form-field ${error ? 'error' : ''}`}>
       <label htmlFor={inputId} className={`form-label ${required ? 'required' : ''}`}>
         {label}
       </label>
