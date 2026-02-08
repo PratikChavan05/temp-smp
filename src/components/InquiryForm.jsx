@@ -109,11 +109,11 @@ const InquiryForm = () => {
       const result = await submitInquiry(formData);
       
       if (result.success) {
-        setSubmitStatus({ type: 'success', message: 'Inquiry submitted successfully!' });
+        setSubmitStatus({ type: 'success', message: 'Form Submitted Successfully! Your inquiry has been received and we will contact you soon.' });
         // Reset form
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 3000);
       } else {
         setSubmitStatus({ type: 'error', message: result.error });
       }
@@ -143,12 +143,6 @@ const InquiryForm = () => {
           <h1 className="form-title">Student Inquiry Form</h1>
           <p className="form-subtitle">Please fill in the details below to submit your inquiry</p>
         </div>
-
-      {submitStatus && (
-        <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'}`}>
-          {submitStatus.message}
-        </div>
-      )}
 
       <form onSubmit={handleSubmit}>
         {/* Student Details Section */}
@@ -396,6 +390,13 @@ const InquiryForm = () => {
             </div>
           </div>
         </div>
+
+        {/* Alert Message */}
+        {submitStatus && (
+          <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'}`}>
+            {submitStatus.message}
+          </div>
+        )}
 
         {/* Submit Button */}
         <div className="btn-group">

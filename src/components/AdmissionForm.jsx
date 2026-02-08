@@ -132,11 +132,11 @@ const AdmissionForm = () => {
       const result = await submitAdmission(formData);
       
       if (result.success) {
-        setSubmitStatus({ type: 'success', message: 'Admission submitted successfully!' });
+        setSubmitStatus({ type: 'success', message: 'Form Submitted Successfully! Your admission application has been received.' });
         // Reset form
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 3000);
       } else {
         setSubmitStatus({ type: 'error', message: result.error });
       }
@@ -166,12 +166,6 @@ const AdmissionForm = () => {
           <h1 className="form-title">Student Admission Form</h1>
           <p className="form-subtitle">Please fill in the details below to complete your admission</p>
         </div>
-
-      {submitStatus && (
-        <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'}`}>
-          {submitStatus.message}
-        </div>
-      )}
 
       <form onSubmit={handleSubmit}>
         {/* Personal Details Section */}
@@ -439,6 +433,13 @@ const AdmissionForm = () => {
             />
           </div>
         </div>
+
+        {/* Alert Message */}
+        {submitStatus && (
+          <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'}`}>
+            {submitStatus.message}
+          </div>
+        )}
 
         {/* Submit Button */}
         <div className="btn-group">
