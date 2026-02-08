@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import InquiryForm from './components/InquiryForm';
 import AdmissionForm from './components/AdmissionForm';
+import './App.css';
 
 const App = () => {
   return (
