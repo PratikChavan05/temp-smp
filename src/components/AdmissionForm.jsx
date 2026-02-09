@@ -47,6 +47,7 @@ const AdmissionForm = () => {
       admissionDate: '',
       targetExamination: '',
     },
+    standard: '',
     status: 'Pending',
   });
 
@@ -102,6 +103,7 @@ const AdmissionForm = () => {
     const requiredFields = [
       'personalDetails.fullName',
       'contact.parentMobile',
+      'standard',
     ];
     
     const validation = validateForm(formData, requiredFields);
@@ -157,6 +159,12 @@ const AdmissionForm = () => {
     { value: 'Male', label: 'Male' },
     { value: 'Female', label: 'Female' },
     { value: 'Other', label: 'Other' },
+  ];
+
+  const standardOptions = [
+    { value: '11', label: 'Class 11' },
+    { value: '12', label: 'Class 12' },
+    { value: 'Others', label: 'Others' },
   ];
 
   return (
@@ -405,6 +413,17 @@ const AdmissionForm = () => {
         <div className="form-section">
           <h2 className="section-title">Admission Details</h2>
           <div className="form-grid">
+            <FormField
+              label="Standard"
+              name="standard"
+              type="select"
+              value={formData.standard}
+              onChange={handleChange}
+              options={standardOptions}
+              required
+              error={errors['standard']}
+            />
+
             <FormField
               label="Reference"
               name="admission.reference"

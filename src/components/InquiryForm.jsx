@@ -27,6 +27,7 @@ const InquiryForm = () => {
     },
     reference: '',
     interestedStudentNote: '',
+    standard: '',
     academics: {
       ssc: {
         board: '',
@@ -80,6 +81,7 @@ const InquiryForm = () => {
     const requiredFields = [
       'studentDetails.fullName',
       'contact.parentMobile',
+      'standard',
     ];
     
     const validation = validateForm(formData, requiredFields);
@@ -134,6 +136,12 @@ const InquiryForm = () => {
     { value: 'Male', label: 'Male' },
     { value: 'Female', label: 'Female' },
     { value: 'Other', label: 'Other' },
+  ];
+
+  const standardOptions = [
+    { value: '11', label: 'Class 11' },
+    { value: '12', label: 'Class 12' },
+    { value: 'Others', label: 'Others' },
   ];
 
   return (
@@ -356,6 +364,17 @@ const InquiryForm = () => {
         <div className="form-section">
           <h2 className="section-title">Additional Information</h2>
           <div className="form-grid">
+            <FormField
+              label="Standard"
+              name="standard"
+              type="select"
+              value={formData.standard}
+              onChange={handleChange}
+              options={standardOptions}
+              required
+              error={errors['standard']}
+            />
+
             <FormField
               label="Reference"
               name="reference"
