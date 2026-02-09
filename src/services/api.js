@@ -35,7 +35,12 @@ export const submitInquiry = async (inquiryData) => {
  */
 export const submitAdmission = async (admissionData) => {
   try {
-    const response = await api.post('/api/admissions/create', admissionData);
+    const config = {};
+    if (admissionData instanceof FormData) {
+      // Let axios set the content type for FormData
+      config.headers = { 'Content-Type': 'multipart/form-data' };
+    }
+    const response = await api.post('/api/admissions/create', admissionData, config);
     return { success: true, data: response.data };
   } catch (error) {
     return {

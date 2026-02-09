@@ -114,24 +114,58 @@ const AdmissionForm = () => {
       
       // Scroll to top of form to show error message
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Alternatively, scroll to the first error field
-      setTimeout(() => {
-        const firstErrorField = document.querySelector('.form-field.error input, .form-field.error select, .form-field.error textarea');
-        if (firstErrorField) {
-          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          firstErrorField.focus();
-        }
-      }, 100);
-      
       return;
     }
     
     setLoading(true);
     
     try {
-      // In a real application, you would handle file upload separately
-      const result = await submitAdmission(formData);
+      const data = new FormData();
+      
+      // Append File
+      if (photoFile) {
+        data.append('file', photoFile);
+      }
+
+      // Append Fields (Mapping to backend flat structure)
+      // Personal
+      data.append('fullName', formData.personalDetails.fullName);
+      data.append('address', formData.personalDetails.address);
+      data.append('dob', formData.personalDetails.dob);
+      data.append('gender', formData.personalDetails.gender);
+      data.append('caste', formData.personalDetails.caste);
+      
+      // Parents
+      data.append('fatherName', formData.parents.father.name);
+      data.append('fatherOccupation', formData.parents.father.occupation);
+      data.append('motherName', formData.parents.mother.name);
+      data.append('motherOccupation', formData.parents.mother.occupation);
+      
+      // Contact
+      data.append('parentMobile', formData.contact.parentMobile);
+      data.append('studentMobile', formData.contact.studentMobile);
+      data.append('email', formData.contact.email);
+      
+      // Academics - SSC
+      data.append('sscBoard', formData.academics.ssc.board);
+      data.append('sscSchoolName', formData.academics.ssc.schoolName);
+      data.append('sscPercentageOrCGPA', formData.academics.ssc.percentageOrCGPA);
+      data.append('sscMathsMarks', formData.academics.ssc.mathsMarks);
+      
+      // Academics - HSC
+      data.append('hscBoard', formData.academics.hsc.board);
+      data.append('hscCollegeName', formData.academics.hsc.collegeName);
+      data.append('hscPercentageOrCGPA', formData.academics.hsc.percentageOrCGPA);
+      data.append('hscMathsMarks', formData.academics.hsc.mathsMarks);
+      
+      // Admission
+      data.append('reference', formData.admission.reference);
+      data.append('admissionDate', formData.admission.admissionDate);
+      data.append('targetExamination', formData.admission.targetExamination);
+      data.append('standard', formData.standard);
+      data.append('status', 'Pending');
+
+      const result = await submitAdmission(data);
       
       if (result.success) {
         setSubmitStatus({ type: 'success', message: 'Form Submitted Successfully! Your admission application has been received.' });
